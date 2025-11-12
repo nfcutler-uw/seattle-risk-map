@@ -10,7 +10,7 @@ const map = new mapboxgl.Map({
 map.on('load', () => {
   map.addSource('risk', {
     type: 'vector',
-    url: 'mapbox://nfcutler.landslide_bldrisk_alki-9q1dpd'
+    url: 'mapbox://nfcutler.6lwsbz30'
   });
 
   map.addLayer({
