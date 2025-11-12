@@ -17,7 +17,7 @@ map.on('load', () => {
     id: 'risk-fill',
     type: 'fill',
     source: 'risk',
-    'source-layer': 'Ann_risk_bld_total',
+    'source-layer': 'landslide_bldrisk_alki-9q1dpd',
     paint: {
       'fill-color': [
         'interpolate', ['linear'], ['get', 'total_sum'],
