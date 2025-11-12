@@ -2,46 +2,26 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibmZjdXRsZXIiLCJhIjoiY21obWN5aWJpMmJueTJrcHFmZ
 
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/nfcutler/cmhmfgt7m000601ss6nw2b8mm', // style name (URL encoded)
+  style: 'mapbox://styles/nfcutler/cmhmfgt7m000601ss6nw2b8mm', // your Mapbox Studio style
   center: [-122.39, 47.57],
   zoom: 13
 });
 
 map.on('load', () => {
-  map.addSource('risk', {
-    type: 'vector',
-    url: 'mapbox://nfcutler.6lwsbz30'
-  });
-
-  map.addLayer({
-    id: 'risk-fill',
-    type: 'fill',
-    source: 'risk',
-    'source-layer': 'landslide_bldrisk_alki-9q1dpd',
-    paint: {
-      'fill-color': [
-        'interpolate', ['linear'], ['get', 'total_sum'],
-        0, '#2DC4B2',
-        0.001, '#F1F075',
-        0.01, '#F28CB1'
-      ],
-      'fill-opacity': 0.7
-    }
-  });
-
-  map.on('click', 'risk-fill', (e) => {
+  // Add click popups for the layer from your style
+  const layerId = 'landslide_bldrisk_alki-9q1dpd';
+  
+  map.on('click', layerId, (e) => {
     const p = e.features[0].properties;
     new mapboxgl.Popup()
       .setLngLat(e.lngLat)
       .setHTML(`
-        <strong>Building ID:</strong> ${p.PIN_2009 || 'n/a'}<br/>
-        <strong>Precip risk:</strong> ${(+p.precip_sum).toExponential(2)}<br/>
-        <strong>Coseismic risk:</strong> ${(+p.coseismic_sum).toExponential(2)}<br/>
-        <strong>Total risk:</strong> ${(+p.total_sum).toExponential(2)}
+        <strong>Total risk:</strong> ${p.Ann_risk_bld_total}<br>
+        <strong>Building ID:</strong> ${p.PIN_2009 || 'n/a'}
       `)
       .addTo(map);
   });
 
-  map.on('mouseenter', 'risk-fill', () => map.getCanvas().style.cursor = 'pointer');
-  map.on('mouseleave', 'risk-fill', () => map.getCanvas().style.cursor = '');
+  map.on('mouseenter', layerId, () => map.getCanvas().style.cursor = 'pointer');
+  map.on('mouseleave', layerId, () => map.getCanvas().style.cursor = '');
 });
