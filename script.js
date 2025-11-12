@@ -1,4 +1,4 @@
-mapboxgl.accessToken = 'sk.eyJ1IjoibmZjdXRsZXIiLCJhIjoiY21od21rMXZzMDE5bjJrcHFyNnlyaDJ5eSJ9.-xBQLd4WiETnhSMLWw1-LQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoibmZjdXRsZXIiLCJhIjoiY21obWN5aWJpMmJueTJrcHFmZGZkY3piYSJ9.FKJD-n7jV8pfzlOktuL2Zw';
 
 const map = new mapboxgl.Map({
   container: 'map',
@@ -17,7 +17,7 @@ map.on('load', () => {
     id: 'risk-fill',
     type: 'fill',
     source: 'risk',
-    'source-layer': 'buildings',
+    'source-layer': 'Ann_risk_bld_total',
     paint: {
       'fill-color': [
         'interpolate', ['linear'], ['get', 'total_sum'],
