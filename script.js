@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'sk.eyJ1IjoibmZjdXRsZXIiLCJhIjoiY21od21rMXZzMDE5bjJrcHFyN
 
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/nfcutler/landslideriskalki', // style name (URL encoded)
+  style: 'mapbox://styles/nfcutler/cmhmfgt7m000601ss6nw2b8mm', // style name (URL encoded)
   center: [-122.39, 47.57],
   zoom: 13
 });
