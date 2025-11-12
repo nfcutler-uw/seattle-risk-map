@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibmZjdXRsZXIiLCJhIjoiY21obWN5aWJpMmJueTJrcHFmZ
 
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/nfcutler/Landslide%20Risk%20Alki', // style name (URL encoded)
+  style: 'mapbox://styles/nfcutler/landslideriskalki', // style name (URL encoded)
   center: [-122.39, 47.57],
   zoom: 13
 });
@@ -10,7 +10,7 @@ const map = new mapboxgl.Map({
 map.on('load', () => {
   map.addSource('risk', {
     type: 'vector',
-    url: 'mapbox://nfcutler.landslide_bldrisk_alki_9q1dpd'
+    url: 'mapbox://nfcutler.landslide_bldrisk_alki-9q1dpd'
   });
 
   map.addLayer({
